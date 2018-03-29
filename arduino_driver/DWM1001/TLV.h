@@ -3,7 +3,7 @@
 
 /* TYPE list */
 
-enum TLVType 
+enum TLVType
 {
     TYPE_CMD_POS_SET            =   1,      //  Request: set position coordinates XYZ
     TYPE_CMD_POS_GET            =   2,      //  Request: get position coordinates XYZ
@@ -43,7 +43,7 @@ enum TLVType
     TYPE_CMD_N_POS_SET          =   128,    //  Request: nested command set position
     TYPE_CMD_N_LOC_GET          =   130,    //  Request: nested command location get
     TYPE_DUMMY                  =   0,      //  Reserved for SPI dummy byte
-}
+};
 
 enum TLVError 
 {
@@ -52,7 +52,7 @@ enum TLVError
     ERROR_INTERNAL_ERROR    =   2,
     ERROR_INVALID_PARAMETER =   3,
     ERROR_BUSY              =   4,
-}
+};
 
 
 #endif

@@ -1,7 +1,8 @@
+#include <SoftwareSerial.h>
 #include "dwm1001.h"
 
-Serial serial;
-dwm1001 ranger(&serial);
+SoftwareSerial serial_port(10, 11);
+//dwm1001 ranger(&serial_port);
 
 void setup() {
 

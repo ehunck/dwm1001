@@ -1,6 +1,6 @@
 #include "dwm1001.h"
 
-dwm1001::dwm1001(Serial port) : _port(port)
+dwm1001::dwm1001(SoftwareSerial& port) : _port(port)
 {
     _port.begin(115200);
 }
@@ -45,13 +45,13 @@ void dwm1001::_TLVRequest(uint8_t type, uint8_t length, uint8_t *payload)
 
 void dwm1001::_TLVResponse(uint8_t *rx_type, uint8_t *rx_length, uint8_t *rx_payload)
 {
-    while(!_port.Available()); // TODO: get rid of these blocking waits
+    while(!_port.available()); // TODO: get rid of these blocking waits
     *rx_type = _port.read();
-    while(!_port.Available()); // TODO: 
+    while(!_port.available()); // TODO: 
     *rx_length = _port.read();
     for(int i = 0; i < *rx_length; i++)
     {
-        while(!_port.Available()); // TODO:
+        while(!_port.available()); // TODO:
         rx_payload[i] = _port.read();
     }
 }

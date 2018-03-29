@@ -2,22 +2,26 @@
 #define _DWM1001_H_
 
 #include "Arduino.h"
+#include <stdlib.h>
+#include <SoftwareSerial.h>
 #include "TLV.h"
+
 
 class dwm1001
 {
 public:
-    dwm1001();
+    dwm1001(SoftwareSerial& port);
     ~dwm1001();
 
     bool DWMReset();
 
 private:
-    Serial& _port;
+    SoftwareSerial& _port;
 
-    void _TLVRequest(uint8_t type, uint8_t length, uint8_t value);
-    void _TLVResponse();
-    void _TLVTransaction();
+    void _TLVRequest(uint8_t type, uint8_t length, uint8_t *payload);
+    void _TLVResponse(uint8_t *rx_type, uint8_t *rx_length, uint8_t *rx_payload);
+    void _TLVTransaction(uint8_t tx_type, uint8_t tx_length, uint8_t *tx_payload,
+    uint8_t *rx_type, uint8_t *rx_length, uint8_t *rx_payload);
 };
 
 
